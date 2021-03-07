@@ -66,6 +66,20 @@ const Home = ({navigation}) => {
       </View>
     );
   };
+  /*Learn More Items */
+  const renderlearnMoreItem = ({item}) => {
+    return (
+      <ImageBackground
+        source={item.image}
+        style={[
+          styles.learMoreItem,
+          {marginLeft: item.id === 'learnMore-1' ? 20 : 0},
+        ]}
+        imageStyle={styles.learMoreItemImage}>
+        <Text style={styles.learMoreItemText}>{item.title}</Text>
+      </ImageBackground>
+    );
+  };
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -107,7 +121,7 @@ const Home = ({navigation}) => {
         {/*End Discover*/}
         {/*Activities*/}
         <View style={styles.activitiesWrapper}>
-          <Text style={styles.activitesTitile}>Activities</Text>
+          <Text style={styles.activitesTitle}>Activities</Text>
           <View style={styles.activitiesItemsWrapper}>
             <FlatList
               data={activitiesData}
@@ -119,6 +133,20 @@ const Home = ({navigation}) => {
           </View>
         </View>
         {/*End Activities*/}
+        {/*Learn More*/}
+        <View style={styles.learnMoreWrapper}>
+          <Text style={styles.learnMoreTitle}>Learn More</Text>
+          <View style={styles.learnMoreItemsWrapper}>
+            <FlatList
+              data={learnMoreData}
+              renderItem={renderlearnMoreItem}
+              keyExtractor={(item) => item.id}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+            />
+          </View>
+        </View>
+        {/*End Learn More*/}
       </ScrollView>
     </View>
   );
@@ -142,6 +170,7 @@ const styles = StyleSheet.create({
     height: 52,
     borderRadius: 10,
   },
+  //Discover Style
   discoverWrapper: {
     //marginHorizontal: 20,
     marginTop: 20,
@@ -192,10 +221,12 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: colors.white,
   },
+  //End Discover Style
+  //Activites Style
   activitiesWrapper: {
     marginTop: 10,
   },
-  activitesTitile: {
+  activitesTitle: {
     marginHorizontal: 20,
     fontFamily: 'Lato-Bold',
     fontSize: 24,
@@ -218,5 +249,36 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: colors.gray,
   },
+  //End Activites Style
+  //Learn More Style
+  learnMoreWrapper: {
+    marginTop: 10,
+  },
+  learnMoreTitle: {
+    marginHorizontal: 20,
+    fontFamily: 'Lato-Bold',
+    fontSize: 24,
+    color: colors.black,
+  },
+  learnMoreItemsWrapper: {
+    paddingVertical: 20,
+  },
+  learMoreItem: {
+    width: 170,
+    height: 180,
+    justifyContent: 'flex-end',
+    marginRight: 20,
+  },
+  learMoreItemImage: {
+    borderRadius: 20,
+  },
+  learMoreItemText: {
+    fontFamily: 'Lato-Bold',
+    fontSize: 18,
+    color: colors.white,
+    marginHorizontal: 10,
+    marginVertical: 20,
+  },
+  //End Learn More Style
 });
 export default Home;
