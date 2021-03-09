@@ -57,14 +57,14 @@ const Details = ({route, navigation}) => {
           <View style={styles.infoItem}>
             <Text style={styles.infoTitle}>Rating</Text>
             <View style={styles.infoTextWrapper}>
-              <Text style={styles.infoText}>${item.rating}</Text>
+              <Text style={styles.infoText}>{item.rating}</Text>
               <Text style={styles.infoSubText}>/5</Text>
             </View>
           </View>
           <View style={styles.infoItem}>
             <Text style={styles.infoTitle}>Duration</Text>
             <View style={styles.infoTextWrapper}>
-              <Text style={styles.infoText}>${item.duration}</Text>
+              <Text style={styles.infoText}>{item.duration}</Text>
               <Text style={styles.infoSubText}> hours</Text>
             </View>
           </View>
